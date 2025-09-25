@@ -1,30 +1,41 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <script src="/uv/uv.bundle.js"></script>
-        <script src="/uv/uv.config.js"></script>
-        <script src="/baremux/index.js"></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UV Proxy Frontend</title>
+  <link rel="stylesheet" href="style.css" />
 
-        <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", async () => {
-                await navigator.serviceWorker.register("/uv/sw.js");
-            });
-        }
-        </script>
+  <!-- UV Core Scripts -->
+  <script src="/uv/uv.bundle.js"></script>
+  <script src="/uv/uv.config.js"></script>
+  <script src="/baremux/index.js"></script>
 
-        <link rel="stylesheet" href="example.css">
-    </head>
-    <body>
-        <input type="text" id="urlInput" placeholder="Enter URL here">
-        <button id="searchButton">Search Text</button>
-        <select id="switcher">
-            <option value="">--Please Choose an Option--</option>
-            <option value="epoxy">Epoxy</option>
-            <option value="bare">Bare</option>
-        </select>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/uv/sw.js");
+      });
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Ultraviolet Proxy</h1>
+    <div class="controls">
+      <input type="text" id="urlInput" placeholder="Enter URL here..." />
+      <button id="searchButton">Browse</button>
 
-        <iframe id="iframeWindow" class="iframeWindow"></iframe>
-    </body>
-    <script src="example.js"></script>
+      <select id="switcher">
+        <option value="">-- Choose connection --</option>
+        <option value="epoxy">Epoxy</option>
+        <option value="bare">Bare</option>
+      </select>
+    </div>
+
+    <iframe id="iframeWindow" class="iframeWindow"></iframe>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
